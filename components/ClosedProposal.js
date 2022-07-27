@@ -54,68 +54,71 @@ export default function Proposal({ index }) {
   // const compileProposals = compile()
 
   return (
-    // <>
-    //   {console.log(proposals, proposalCount, index)}
-    //   {/* {success ? (<div>hello world</div>) : (console.log(success))} */}
+    <>
+      {console.log(proposals, proposalCount, index)}
+      {/* {success ? (<div>hello world</div>) : (console.log(success))} */}
 
-    //   <div className={styles.proposal}>
-    //     <p>ID: {id}</p>
+      <div className={styles.proposal}>
+        <p>ID: {id}</p>
 
-    //     <div className="grid grid-cols-2 grid-rows-2 text-xl">
-    //       {/* <p className="text-left">Approved {Math.round(approved/totalVotes*100 * 100)/100}%</p> */}
-    //       {/* <div style="height:2px">Test</div> */}
-    //       <p className="text-left" style={{color:"red"}}>This is a paragraph.</p>
+        <div className="grid grid-cols-2 grid-rows-2 text-xl">
+          <div style={{backgroundColor:"grey" , width:(Math.round(approved/totalVotes*100 * 100)/100).toString()+"%"}}>
+          </div>
+          <p className="text-left" style={{position:"absolute"}}>Approved {Math.round(approved/totalVotes*100 * 100)/100}%</p>
+          {/* <p className="text-left" style={{color:"red"}}>This is a paragraph.</p> */}
 
-    //       <p className="text-left">Result: {executed ? "Executed" : "Defeated"}</p>
-    //       <p className="text-left">Rejected {Math.round(rejected/totalVotes*100 * 100)/100}%</p>
-    //       <p className="text-left">Ended: N/A</p>
-    //     </div>
+          <p className="text-left">Result: {executed ? "Executed" : "Defeated"}</p>
+          <div style={{backgroundColor:"grey" , width:(Math.round(rejected/totalVotes*100 * 100)/100).toString()+"%"}}>
+          </div>
+          <p className="text-left" style={{position:"absolute"}}>Rejected {Math.round(rejected/totalVotes*100 * 100)/100}%</p>
+          <p className="text-left">Ended: N/A</p>
+        </div>
 
-    //     <div className="grid grid-cols-2 grid-rows-2">
-    //       <p className="text-left">Approved: {approved}</p>
-    //       <p className="text-right">Abstained: {abstained}</p>
-    //       <p className="text-left">Rejected: {rejected}</p>
-    //       <p className="text-right">Total Votes: {totalVotes}</p>
-    //     </div>
+        <div className="grid grid-cols-2 grid-rows-2">
+          <p className="text-left">Approved: {approved}</p>
+          <p className="text-right">Abstained: {abstained}</p>
+          <p className="text-left">Rejected: {rejected}</p>
+          <p className="text-right">Total Votes: {totalVotes}</p>
+        </div>
 
-    //     <p>Start block: {startBlock}</p>
-    //     <p>End block: {endBlock}</p>
-    //   </div>
-    // </>
+        <p>Start block: {startBlock}</p>
+        <p>End block: {endBlock}</p>
+      </div>
+    </>
 
-        <>
-          {closedProposals.map((proposal) => {
-            let total = proposal.approved+proposal.abstained+proposal.rejected
-            let approvedPercentage = (Math.round(proposal.approved/total*100 * 100)/100).toString()+"%";
-            let rejectPercentage = (Math.round(proposal.rejected/total*100 * 100)/100).toString()+"%";
+        // <>
+        //   {closedProposals.map((proposal) => {
+        //     let total = proposal.approved+proposal.abstained+proposal.rejected
+        //     let approvedPercentage = (Math.round(proposal.approved/total*100 * 100)/100).toString()+"%";
+        //     let rejectPercentage = (Math.round(proposal.rejected/total*100 * 100)/100).toString()+"%";
 
-        return(
-            <div key={proposal.id} className={styles.proposal}>
-              <p className="text-xl">ID: {proposal.id}</p>
+        // return(
+        //     <div key={proposal.id} className={styles.proposal}>
+        //       <p className="text-xl">ID: {proposal.id}</p>
 
-              <div className="grid grid-cols-2 grid-rows-2 text-xl">
-                <div style={{backgroundColor:"grey" , width:approvedPercentage, maxWidth:"100%"}}>
-                </div>
-                <p className="text-left" style={{position:"absolute"}}>Approved {Math.round(proposal.approved/total*100 * 100)/100}%</p>
-                <p className="text-left">Result: {proposal.executed ? "Executed" : "Defeated"}</p>
-                {/* <p className="text-left" style={{color:correctColor}}>This is a paragraph.</p> */}
-                <div style={{backgroundColor:"grey" , width:rejectPercentage}}>
-                <p className="text-left">Reject {Math.round(proposal.rejected/total*100 * 100)/100}%</p>
-                </div>
-                <p className="text-left">Ended: N/A</p>
-              </div>
-            <br></br>
-              <div className="grid grid-cols-2 grid-rows-2">
-                <p className="text-left w-max">Approved: {proposal.approved}</p>
-                <p className="text-right">Abstained: {proposal.abstained}</p>
-                <p className="text-left">Rejected: {proposal.rejected}</p>
-                <p className="text-right">Total Votes: {total}</p>
-              </div>
-            </div>
-            )
-            }
-          )}
-        </>
+        //       <div className="grid grid-cols-2 grid-rows-2 text-xl">
+                // <div style={{backgroundColor:"grey" , width:approvedPercentage, maxWidth:"100%"}}>
+                // </div>
+        //         <p className="text-left" style={{position:"absolute"}}>Approved {Math.round(proposal.approved/total*100 * 100)/100}%</p>
+        //         <p className="text-left">Result: {proposal.executed ? "Executed" : "Defeated"}</p>
+        //         {/* <p className="text-left" style={{color:correctColor}}>This is a paragraph.</p> */}
+        //         <div style={{backgroundColor:"grey" , width:rejectPercentage}}>
+        //         <p className="text-left">Reject {Math.round(proposal.rejected/total*100 * 100)/100}%</p>
+        //         </div>
+        //         <p className="text-left">Ended: N/A</p>
+        //       </div>
+        //     <br></br>
+        //       <div className="grid grid-cols-2 grid-rows-2">
+        //         <p className="text-left w-max">Approved: {proposal.approved}</p>
+        //         <p className="text-right">Abstained: {proposal.abstained}</p>
+        //         <p className="text-left">Rejected: {proposal.rejected}</p>
+        //         <p className="text-right">Total Votes: {total}</p>
+        //       </div>
+        //     </div>
+        //     )
+        //     }
+        //   )}
+        // </>
 
 
   );

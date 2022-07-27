@@ -4,6 +4,8 @@ import { GOVERNANCE_ABI, GOVERNANCE_ADDRESS } from "../../utils/constants";
 
 import { useRouter } from "next/router";
 
+import Vote from '../../components/Vote'
+
 const Proposal = () => {
   const router = useRouter();
   const proposalId = router.query.id;
@@ -27,6 +29,13 @@ const Proposal = () => {
     functionName: "proposals",
     args: [proposalId],
   });
+
+  const {data: state} = useContractRead({
+    addressOrName: GOVERNANCE_ADDRESS,
+    contractInterface: GOVERNANCE_ABI,
+    functionName: 'state',
+    args: [proposalId],
+  })
 
   var query = `query {
     proposal (id: ${proposalId}) {
@@ -116,10 +125,10 @@ const Proposal = () => {
           <span className="font-bold text-xl">Project Ethereum Wallet</span>
           <p>{proposal.current["Project Ethereum Wallet"]}</p>
         </div>
-        <div className="w-full flex flex-1 justify-evenly">
-          <button className="rounded-md border-black border-2 px-2">Approve</button>
-          <button className="rounded-md border-black border-2 px-2">Reject</button>
-        </div>
+        {state?.toString() == '1' ? <div className="w-full flex flex-1 justify-evenly">
+          <Vote id={proposalId} vote={1}/>
+          <Vote id={proposalId} vote={0}/>
+        </div> : null}
       </div>
     </div>
   );
