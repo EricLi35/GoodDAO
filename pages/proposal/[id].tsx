@@ -117,8 +117,8 @@ const Proposal = () => {
           <p>{proposal.current["Project Ethereum Wallet"]}</p>
         </div>
         <div className="w-full flex flex-1 justify-evenly">
-          <button>Approve</button>
-          <button>Reject</button>
+          <button className="rounded-md border-black border-2 px-2">Approve</button>
+          <button className="rounded-md border-black border-2 px-2">Reject</button>
         </div>
       </div>
     </div>

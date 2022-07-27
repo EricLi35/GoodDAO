@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import styles from '../../styles/ProposalPages.module.css'
 import Proposal from '../../components/PendingProposal'
 
-export default function proposalDetails() {
+export default function ProposalDetails() {
     const router = useRouter()
     const { id } = router.query
 

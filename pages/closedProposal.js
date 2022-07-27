@@ -13,7 +13,7 @@ export default function ClosedProposal() {
 
     const [proposalCount, setProposalCount] = useState(-99)
 
-    const [array1, setArray1] = useState([])
+    const [array1, setArray1] = useState([0])
 
     
     // gets the total number of proposals submitted
@@ -25,17 +25,17 @@ export default function ClosedProposal() {
         onSuccess(data) {
             setProposalCount(parseInt(data))
             console.log('Found proposal count', proposalCount)
-            setArray()
+            // setArray()
         }
     })
 
-    function setArray() {
-        for (let i = array1.length+1; i <= proposalCount; i++) {
-                array1.push(i)
-                console.log("setArray is ")
-                console.log(array1)
-        }
-    }
+    // function setArray() {
+    //     for (let i = array1.length+1; i <= proposalCount; i++) {
+    //             array1.push(i)
+    //             console.log("setArray is ")
+    //             console.log(array1)
+    //     }
+    // }
 
 
     return (
