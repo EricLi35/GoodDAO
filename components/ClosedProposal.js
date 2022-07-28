@@ -61,20 +61,32 @@ export default function Proposal({ index }) {
       <div className={styles.proposal}>
         <p>ID: {id}</p>
 
-        <div className="grid grid-cols-2 grid-rows-2 text-xl">
-          <div style={{backgroundColor:"grey" , width:(Math.round(approved/totalVotes*100 * 100)/100).toString()+"%"}}>
-          </div>
-          <p className="text-left" style={{position:"absolute"}}>Approved {Math.round(approved/totalVotes*100 * 100)/100}%</p>
-          {/* <p className="text-left" style={{color:"red"}}>This is a paragraph.</p> */}
+          {/* <div style={{backgroundColor:"blue" , width:"10%", whiteSpace:"nowrap"}}>
+          <p className="text-left" style={{}}>Approved {Math.round(approved/totalVotes*100 * 100)/100}%</p>
+          </div> */}
 
-          <p className="text-left">Result: {executed ? "Executed" : "Defeated"}</p>
-          <div style={{backgroundColor:"grey" , width:(Math.round(rejected/totalVotes*100 * 100)/100).toString()+"%"}}>
+
+
+        <div className="grid gap-x-2 gap-y-0 grid-cols-2 grid-rows-2 text-xl">
+          <div className="border-2 border-neutral-300 rounded-sm">
+          <div style={{backgroundColor:"#bfbfbf", borderRadius:3, width:(Math.round(approved/totalVotes*100 * 100)/100).toString()+"%", whiteSpace:"nowrap"}}>
+          <p className="text-left px-1">Approved {Math.round(approved/totalVotes*100 * 100)/100}%</p>
           </div>
-          <p className="text-left" style={{position:"absolute"}}>Rejected {Math.round(rejected/totalVotes*100 * 100)/100}%</p>
+          </div>
+
+
+          {/* <p className="text-left" style={{color:"red"}}>This is a paragraph.</p> */}
+          <p className="text-left">Result: {executed ? "Executed" : "Defeated"}</p>
+
+          <div className="border-2 border-neutral-300 rounded-sm">
+          <div style={{backgroundColor:"#bfbfbf" , borderRadius:3, width:(Math.round(rejected/totalVotes*100 * 100)/100).toString()+"%", whiteSpace:"nowrap"}}>
+          <p className="text-left px-1">Rejected {Math.round(rejected/totalVotes*100 * 100)/100}%</p>
+          </div>
+          </div>  
+          
           <p className="text-left">Ended: N/A</p>
         </div>
-
-        <div className="grid grid-cols-2 grid-rows-2">
+        <div className="grid grid-cols-2 grid-rows-2 mt-3">
           <p className="text-left">Approved: {approved}</p>
           <p className="text-right">Abstained: {abstained}</p>
           <p className="text-left">Rejected: {rejected}</p>
